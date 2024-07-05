@@ -5,9 +5,8 @@ const bodyParser = require("body-parser");
 const config = require("./config");
 const formRoutes = require("./routes/formRoutes");
 const responseRoutes = require("./routes/responseRoutes");
-
 const app = express();
-
+require("dotenv").config();
 // Middleware
 app.use(bodyParser.json());
 
@@ -17,10 +16,7 @@ app.use("/responses", responseRoutes);
 
 // MongoDB connection
 mongoose
-  .connect(
-    "mongodb+srv://shubhamjoshi99899:GPhR89JpJ9nVu8gc@cluster0.35hdsz3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-    {},
-  )
+  .connect(process.env.MONGODB_URL, {})
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -30,5 +26,5 @@ mongoose
 
 // Start the server
 app.listen(config.port, () => {
-  console.log(`Server is running on port ${config.PORT}`);
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
