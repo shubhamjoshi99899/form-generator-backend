@@ -7,7 +7,7 @@ const fieldSchema = new Schema({
   type: { type: String, required: true },
   options: { type: [String], default: [] },
   required: { type: Boolean, default: false },
-  _id: { type: Schema.Types.ObjectId, auto: true },
+  _id: { type: Schema.Types.ObjectId, auto: true, unique: true },
 });
 
 const formSchema = new Schema({
