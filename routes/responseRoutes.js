@@ -9,6 +9,7 @@ router.post("/", async (req, res) => {
   try {
     const { formId, responses } = req.body;
 
+    console.log(responses);
     // Validate that the form exists
     const form = await Form.findById(formId);
     if (!form) {

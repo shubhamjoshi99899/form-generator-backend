@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const config = require("./config");
 const formRoutes = require("./routes/formRoutes");
 const responseRoutes = require("./routes/responseRoutes");
+const currentFormRoutes = require("./routes/currentFormRoutes");
+const userRoutes = require("./routes/userRoutes");
 const cors = require("cors");
 const app = express();
 require("dotenv").config();
@@ -15,6 +17,8 @@ app.use(cors());
 // Routes
 app.use("/forms", formRoutes);
 app.use("/responses", responseRoutes);
+app.use("/currentForm", currentFormRoutes);
+app.use("/users", userRoutes);
 
 // MongoDB connection
 mongoose

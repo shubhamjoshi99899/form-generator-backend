@@ -1,12 +1,18 @@
-// routes/formRoutes.js
 const express = require("express");
 const router = express.Router();
 const Form = require("../models/form");
 
 // POST: Create a new form
 router.post("/", async (req, res) => {
+  const { title, description, fields, userId } = req.body;
+
   try {
-    const form = new Form(req.body);
+    const form = new Form({
+      title,
+      description,
+      fields,
+      createdBy: userId,
+    });
     await form.save();
     res.status(201).json({ message: "Form created successfully", form });
   } catch (error) {
@@ -16,10 +22,12 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET: Retrieve all forms
-router.get("/", async (req, res) => {
+// GET: Retrieve all forms created by a specific user
+router.get("/user/:userId", async (req, res) => {
+  const { userId } = req.params;
+
   try {
-    const forms = await Form.find();
+    const forms = await Form.find({ createdBy: userId });
     res.status(200).json(forms);
   } catch (error) {
     res
