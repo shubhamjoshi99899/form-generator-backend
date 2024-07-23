@@ -7,7 +7,11 @@ const formRoutes = require("./routes/formRoutes");
 const responseRoutes = require("./routes/responseRoutes");
 const currentFormRoutes = require("./routes/currentFormRoutes");
 const userRoutes = require("./routes/userRoutes");
+const collectionRoutes = require("./routes/collection");
+const selectedCollectionRoutes = require("./routes/selectedCollection");
 const cors = require("cors");
+const path = require("path");
+const fs = require("fs");
 const app = express();
 require("dotenv").config();
 // Middleware
@@ -19,6 +23,8 @@ app.use("/forms", formRoutes);
 app.use("/responses", responseRoutes);
 app.use("/currentForm", currentFormRoutes);
 app.use("/users", userRoutes);
+app.use("/collections", collectionRoutes);
+app.use("/selectedCollection", selectedCollectionRoutes);
 
 // MongoDB connection
 mongoose
