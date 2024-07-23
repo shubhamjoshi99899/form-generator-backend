@@ -42,7 +42,7 @@ router.get("/", async (req, res) => {
     }
     res.send(selectedCollection);
   } else {
-    res.send([]);
+    res.send(null);
   }
 });
 
