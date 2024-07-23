@@ -7,7 +7,7 @@ const selectedCollectionSchema = new mongoose.Schema({
     ref: "Collection",
     required: true,
   },
-  items: [Item.schema],
+  images: [Item.schema],
 });
 
 module.exports = mongoose.model("SelectedCollection", selectedCollectionSchema);
