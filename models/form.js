@@ -18,7 +18,6 @@ const formSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   fields: { type: [fieldSchema], required: true },
-  createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 module.exports = mongoose.model("Form", formSchema);
