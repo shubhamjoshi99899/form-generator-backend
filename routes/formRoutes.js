@@ -11,7 +11,6 @@ router.post("/", async (req, res) => {
       title,
       description,
       fields,
-      createdBy: userId,
     });
     await form.save();
     res.status(201).json({ message: "Form created successfully", form });
